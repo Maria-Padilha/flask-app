@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibir Todos os Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Eventos</h1>
+
+    <a href="/">Voltar para a página inicial</a>
+
+    {% if eventos %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Data</th>
+                    <th>Local</th>
+                    <th>Descrição</th>
+                    <th>Organizador</th>
+                    <th>Contato</th>
+                    <th>Observações</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for evento in eventos %}
+                <tr>
+                    <td>{{ evento.id }}</td>
+                    <td>{{ evento.nome }}</td>
+                    <td>{{ evento.data }}</td>
+                    <td>{{ evento.local }}</td>
+                    <td>{{ evento.descricao }}</td>
+                    <td>{{ evento.organizador }}</td>
+                    <td>{{ evento.contato }}</td>
+                    <td>{{ evento.observacoes }}</td>
+                    <td class="actions">
+                        <a href="{{ url_for('editar', id=evento.id) }}">Editar</a>
+                        <a href="{{ url_for('deletar', id=evento.id) }}" onclick="return confirm('Tem certeza que deseja excluir este evento?')">Deletar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhum evento encontrado.</p>
+    {% endif %}
+</body>
+</html>

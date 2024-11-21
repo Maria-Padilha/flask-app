@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Pesquisar Eventos</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Pesquisar Eventos</h1>
+        <form action="/pesquisa" method="POST">
+            <input type="text" name="termo" placeholder="Digite o nome do evento" required>
+            <button type="submit">Pesquisar</button>
+        </form>
+
+        {% if eventos %}
+        <h2>Resultados da Pesquisa</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Data</th>
+                    <th>Local</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for evento in eventos %}
+                <tr>
+                    <td>{{ evento.nome }}</td>
+                    <td>{{ evento.data }}</td>
+                    <td>{{ evento.local }}</td>
+                    <td>
+                        <a href="/editar/{{ evento.id }}">Editar</a> |
+                        <a href="/deletar/{{ evento.id }}" onclick="return confirm('Tem certeza que deseja excluir este evento?')">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Nenhum evento encontrado.</p>
+        {% endif %}
+
+        <a href="/">Voltar para a página inicial</a>
+    </div>
+</body>
+</html>

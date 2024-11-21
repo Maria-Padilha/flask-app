@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Editar Evento</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Evento</h1>
+        <form action="/editar/{{ evento.id }}" method="POST">
+            <label for="nome">Nome do Evento:</label>
+            <input type="text" id="nome" name="nome" value="{{ evento.nome }}" required>
+
+            <label for="data">Data do Evento:</label>
+            <input type="date" id="data" name="data" value="{{ evento.data }}" required>
+
+            <label for="local">Local:</label>
+            <input type="text" id="local" name="local" value="{{ evento.local }}" required>
+
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao">{{ evento.descricao }}</textarea>
+
+            <label for="organizador">Organizador:</label>
+            <input type="text" id="organizador" name="organizador" value="{{ evento.organizador }}" required>
+
+            <label for="contato">Contato:</label>
+            <input type="tel" id="contato" name="contato" value="{{ evento.contato }}" required>
+
+            <label for="observacoes">Observações:</label>
+            <textarea id="observacoes" name="observacoes">{{ evento.observacoes }}</textarea>
+
+            <input type="submit" value="Salvar Alterações">
+        </form>
+        <a href="/">Voltar para a página inicial</a>
+    </div>
+</body>
+</html>
