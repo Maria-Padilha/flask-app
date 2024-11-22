@@ -2,6 +2,9 @@
 
 Este é um sistema completo de cadastro, pesquisa, edição, exclusão e exportação de dados relacionados a eventos. Ele foi desenvolvido utilizando **Flask**, **SQLite**, **HTML**, **CSS** e **Bootstrap** para oferecer uma interface simples e funcional.
 
+💻
+<a href="http://15.228.166.32:5000/" target="_blank">Visite a Página</a>
+
 ---
 
 ## **🚀 Funcionalidades**
